@@ -1,13 +1,14 @@
-import { title } from "process";
+import { getJob, getJobs } from "./db/jobs.js";
 
 const resolvers = {
     Query: {
-        job: () => {
-            return {
-                id: "test-id",
-                title: "SDE",
-                description: "Do work"
-            }
+        jobs: () => getJobs()
+    },
+
+    Job: {
+        date: (x) => {
+            const d = x.createdAt
+            return d.slice(0, 10);
         }
     }
 }
