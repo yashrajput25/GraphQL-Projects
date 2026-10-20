@@ -1,9 +1,17 @@
-type Query{
-    job: Job
+type Query {
+  jobs: [Job]
 }
 
-type Job{
-    id: ID!,
-    title: String,
-    description: String
+"""
+Represnts job posted to our board
+"""
+type Job {
+  id: ID!
+  title: String!
+  """
+  The __date__ when the job was published, in ISO-8601 format.
+  """
+  date: String!
+  description: String
 }
+
